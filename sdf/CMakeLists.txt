@@ -5,16 +5,17 @@ add_subdirectory(1.4)
 add_subdirectory(1.5)
 add_subdirectory(1.6)
 add_subdirectory(1.7)
+add_subdirectory(1.8)
 
 add_custom_target(schema)
-add_dependencies(schema schema1_7)
+add_dependencies(schema schema1_8)
 
-# Generate the EmbeddedSdf.hh file, which contains all the supported SDF
+# Generate the EmbeddedSdf.cc file, which contains all the supported SDF
 # descriptions in a map of strings. The parser.cc file uses EmbeddedSdf.hh.
 execute_process(
   COMMAND ${RUBY} ${CMAKE_SOURCE_DIR}/sdf/embedSdf.rb
   WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/sdf"
-  OUTPUT_FILE "${PROJECT_BINARY_DIR}/include/sdf/EmbeddedSdf.hh"
+  OUTPUT_FILE "${PROJECT_BINARY_DIR}/src/EmbeddedSdf.cc"
 )
 
 # Generate aggregated SDF description files for use by the sdformat.org 
@@ -23,7 +24,7 @@ execute_process(
 if (IGNITION-TOOLS_BINARY_DIRS)
 
   # Update this list as new sdformat spec versions are added.
-  set(sdf_desc_versions 1.4 1.5 1.6 1.7)
+  set(sdf_desc_versions 1.4 1.5 1.6 1.7 1.8)
 
   set(description_targets)
   foreach(desc_ver ${sdf_desc_versions})
