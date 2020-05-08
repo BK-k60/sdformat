@@ -4,6 +4,9 @@
 
 ### libsdformat 10.0.0 (202X-XX-XX)
 
+1. Make parsing of values syntactically more strict with bad values generating an error
+    * [Pull request 244](https://github.com/osrf/sdformat/pull/244)
+
 1. Changed the default radius of a Cylinder from 1.0 to 0.5 meters.
     * [Pull request 643](https://osrf-migration.github.io/sdformat-gh-pages/#!/osrf/sdformat/pull-requests/643)
 
